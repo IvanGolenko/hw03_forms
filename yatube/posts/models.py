@@ -1,5 +1,4 @@
 from django.db import models
-
 from django.contrib.auth import get_user_model
 
 
@@ -7,7 +6,7 @@ User = get_user_model()
 
 
 class Group(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField('Заголовок', max_length=200)
     slug = models.SlugField(unique=True)
     description = models.TextField()
 
@@ -30,7 +29,7 @@ class Post(models.Model):
         blank=True,
         null=True,
         related_name='posts',
-        verbose_name='Группа'
+        verbose_name='Группа',
     )
 
     class Meta:

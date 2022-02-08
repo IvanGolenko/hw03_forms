@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}<title>Пост {{ post.text|truncatechars:30 }} </title>{% endblock %}
 {% block content %}
-  <body>      
-    <main>
       <div class="row">
         <aside class="col-12 col-md-3">
           <ul class="list-group list-group-flush">
@@ -34,8 +32,12 @@
           <p>
             {{ post.text }}
           </p>
+          {% if user == post.author %}
+            <a class="btn btn-primary" 
+            href="{% url 'posts:post_edit' post.id %}">
+            редактировать запись
+            </a>
+          {% endif %}
         </article>
-      </div> 
-    </main>
-  </body>
+      </div>
 {% endblock %}
